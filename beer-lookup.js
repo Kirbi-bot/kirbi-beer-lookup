@@ -1,4 +1,4 @@
-const Kirbi = require('/kirbi');
+const Kirbi = require('../../kirbi');
 
 exports.commands = [
 	'brew'

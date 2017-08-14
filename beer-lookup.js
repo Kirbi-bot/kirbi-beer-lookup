@@ -11,7 +11,7 @@ exports.brew = {
 	process: (msg, suffix, isEdit, cb) => {
 		if (!suffix) {
 			cb({embed: {
-				color: Kirbi.Config.defaultEmbedColor,
+				color: Kirbi.Config.discord.defaultEmbedColor,
 				author: {
 					name: 'BreweryDB',
 					url: 'http://www.brewerydb.com/',
@@ -75,7 +75,7 @@ exports.brew = {
 					};
 
 					cb({embed: {
-						color: Kirbi.Config.defaultEmbedColor,
+						color: Kirbi.Config.discord.defaultEmbedColor,
 						title: result.name,
 						author: {
 							name: 'BreweryDB',
@@ -90,7 +90,7 @@ exports.brew = {
 					}}, msg);
 				} else {
 					cb({embed: {
-						color: Kirbi.Config.defaultEmbedColor,
+						color: Kirbi.Config.discord.defaultEmbedColor,
 						author: {
 							name: 'BreweryDB',
 							url: 'http://www.brewerydb.com/',
@@ -101,7 +101,7 @@ exports.brew = {
 				}
 			} else {
 				cb({embed: {
-					color: Kirbi.Config.defaultEmbedColor,
+					color: Kirbi.Config.discord.defaultEmbedColor,
 					author: {
 						name: 'BreweryDB',
 						url: 'http://www.brewerydb.com/',

@@ -1,13 +1,37 @@
 {
-	"name": "kirbi-beer-lookup",
-	"version": "0.0.1",
-	"description": "adds the !brew command to Kirbi",
-	"author": "Nate Richardson <hello@naterichardson.com> (https://naterichardson.com)",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Richardson-Media-House/kirbi-beer-lookup.git"
-	},
-	"license": "Apache-2.0",
-	"dependencies": {},
-	"main": "beer-lookup.js"
+  "name": "kirbi-beer-lookup",
+  "description": "adds the !brew command to Kirbi",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "readme": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Richardson-Media-House/kirbi-beer-lookup.git"
+  },
+  "author": "Nate Richardson <hello@naterichardson.com> (https://naterichardson.com)",
+  "contributors": [
+    "Matt Carroll <admin@develogix.com> (https://develogix.com)",
+    "Joseph Moran III <joseph.moraniii@gmail.com> (https://josephmoran.co)"
+  ],
+  "main": "beer-lookup.js",
+  "dependencies": {
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "xo": "^0.18.2"
+  },
+  "xo": {
+    "rules": {
+      "linebreak-style": [
+        "error",
+        "windows"
+      ],
+      "no-prototype-builtins": "warn",
+      "radix": "warn",
+      "guard-for-in": "warn"
+    }
+  },
+  "scripts": {
+    "test": "xo"
+  }
 }

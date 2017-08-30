@@ -24,9 +24,9 @@ module.exports = function (config, auth) {
 
 				if (suffix) {
 					require('request')(`http://api.brewerydb.com/v2/search?q=${encodeURIComponent(suffix)}&key=${auth.brewerydb_api_key}`, (err, res, body) => {
-						if (err !== 'undefined') {
+						if (err !== 'undefined' && err !== null) {
 							brewEmbed.embed.description = 'Service unavailable!';
-						} else if (typeof res.data !== 'undefined' && res.data.length > 0) {
+						} else if (typeof body !== 'undefined') {
 							let response = JSON.parse(body);
 							let result = response.data[0];
 							if (typeof result.description !== 'undefined') {
@@ -75,8 +75,16 @@ module.exports = function (config, auth) {
 										value: result.established,
 										inline: true
 									});
-								};
+								}
 		
+								if (fields !== []) {
+									brewEmbed.embed.fields = fields;
+								}
+								if (thumbnail !== '') {
+									brewEmbed.embed.thumbnail = {
+										url: thumbnail
+									};
+								}
 								brewEmbed.embed.description = `\n${result.description}\n\n`;
 							} else {
 								brewEmbed.embed.description = `${response.data[0].name} is a good beer, but I don't have a good way to describe it.`;

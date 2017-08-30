@@ -23,8 +23,8 @@ module.exports = function (Kirbi) {
 				}};
 
 				if (suffix) {
-						if (err !== 'undefined' && err !== null) {
 					require('request')(`http://api.brewerydb.com/v2/search?q=${encodeURIComponent(suffix)}&key=${Kirbi.Auth.brewerydb_api_key}`, (err, res, body) => {
+						if (err !== 'undefined' && err !== null) {
 							brewEmbed.embed.description = 'Service unavailable!';
 						} else if (typeof body !== 'undefined') {
 							let response = JSON.parse(body);

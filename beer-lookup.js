@@ -1,4 +1,4 @@
-module.exports = function (config, auth) {
+module.exports = function (Kirbi) {
 	return {
 		commands: [
 			'brew'
@@ -9,7 +9,7 @@ module.exports = function (config, auth) {
 			description: 'Used to retrieve specific information about a brewery or brew.',
 			process: (msg, suffix, isEdit, cb) => {
 				const brewEmbed = {embed: {
-					color: config.discord.defaultEmbedColor,
+					color: Kirbi.Config.discord.defaultEmbedColor,
 					author: {
 						name: 'BreweryDB',
 						url: 'http://www.brewerydb.com/',
@@ -23,8 +23,8 @@ module.exports = function (config, auth) {
 				}};
 
 				if (suffix) {
-					require('request')(`http://api.brewerydb.com/v2/search?q=${encodeURIComponent(suffix)}&key=${auth.brewerydb_api_key}`, (err, res, body) => {
 						if (err !== 'undefined' && err !== null) {
+					require('request')(`http://api.brewerydb.com/v2/search?q=${encodeURIComponent(suffix)}&key=${Kirbi.Auth.brewerydb_api_key}`, (err, res, body) => {
 							brewEmbed.embed.description = 'Service unavailable!';
 						} else if (typeof body !== 'undefined') {
 							let response = JSON.parse(body);

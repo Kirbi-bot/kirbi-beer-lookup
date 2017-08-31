@@ -27,19 +27,19 @@ module.exports = function (Kirbi) {
 						if (err !== 'undefined' && err !== null) {
 							brewEmbed.embed.description = 'Service unavailable!';
 						} else if (typeof body !== 'undefined') {
-							let response = JSON.parse(body);
-							let result = response.data[0];
+							const response = JSON.parse(body);
+							const result = response.data[0];
 							if (typeof result.description !== 'undefined') {
-								let fields = [];
+								const fields = [];
 								let thumbnail = '';
 								if (typeof result.labels !== 'undefined') {
 									thumbnail = result.labels.medium;
 								}
-		
+
 								if (typeof result.images !== 'undefined') {
 									thumbnail = result.images.squareMedium;
 								}
-		
+
 								if (typeof result.style !== 'undefined') {
 									fields.push({
 										name: `Style: ${result.style.name}`,
@@ -60,7 +60,7 @@ module.exports = function (Kirbi) {
 										inline: true
 									});
 								}
-		
+
 								if (typeof result.website !== 'undefined') {
 									fields.push({
 										name: 'Website',
@@ -68,7 +68,7 @@ module.exports = function (Kirbi) {
 										inline: true
 									});
 								}
-		
+
 								if (typeof result.established !== 'undefined') {
 									fields.push({
 										name: 'Year Established',
@@ -76,7 +76,7 @@ module.exports = function (Kirbi) {
 										inline: true
 									});
 								}
-		
+
 								if (fields !== []) {
 									brewEmbed.embed.fields = fields;
 								}

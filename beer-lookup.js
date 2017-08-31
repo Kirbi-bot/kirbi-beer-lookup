@@ -8,7 +8,7 @@ module.exports = function (Kirbi) {
 			type: 'normal',
 			description: 'Used to retrieve specific information about a brewery or brew.',
 			process: (msg, suffix, isEdit, cb) => {
-				const brewEmbed = {embed: {
+				const brewEmbed = { embed: {
 					color: Kirbi.Config.discord.defaultEmbedColor,
 					author: {
 						name: 'BreweryDB',
@@ -20,7 +20,7 @@ module.exports = function (Kirbi) {
 						icon_url: 'http://s3.amazonaws.com/brewerydb/Powered-By-BreweryDB.png'
 					},
 					description: 'How about asking for something specific?'
-				}};
+				} };
 
 				if (suffix) {
 					require('request')(`http://api.brewerydb.com/v2/search?q=${encodeURIComponent(suffix)}&key=${Kirbi.Auth.brewerydb_api_key}`, (err, res, body) => {

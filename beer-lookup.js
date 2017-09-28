@@ -1,4 +1,4 @@
-module.exports = function (Kirbi) {
+module.exports = Kirbi => {
 	return {
 		commands: [
 			'brew'
@@ -8,19 +8,21 @@ module.exports = function (Kirbi) {
 			type: 'normal',
 			description: 'Used to retrieve specific information about a brewery or brew.',
 			process: (msg, suffix, isEdit, cb) => {
-				const brewEmbed = { embed: {
-					color: Kirbi.Config.discord.defaultEmbedColor,
-					author: {
-						name: 'BreweryDB',
-						url: 'http://www.brewerydb.com/',
-						icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/103/beer-mug_1f37a.png'
-					},
-					footer: {
-						text: 'powered by BreweryDB',
-						icon_url: 'http://s3.amazonaws.com/brewerydb/Powered-By-BreweryDB.png'
-					},
-					description: 'How about asking for something specific?'
-				} };
+				const brewEmbed = {
+					embed: {
+						color: Kirbi.Config.discord.defaultEmbedColor,
+						author: {
+							name: 'BreweryDB',
+							url: 'http://www.brewerydb.com/',
+							icon_url: 'https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/103/beer-mug_1f37a.png'
+						},
+						footer: {
+							text: 'powered by BreweryDB',
+							icon_url: 'http://s3.amazonaws.com/brewerydb/Powered-By-BreweryDB.png'
+						},
+						description: 'How about asking for something specific?'
+					}
+				};
 
 				if (suffix) {
 					require('request')(`http://api.brewerydb.com/v2/search?q=${encodeURIComponent(suffix)}&key=${Kirbi.Auth.brewerydb_api_key}`, (err, res, body) => {
